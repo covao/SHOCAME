@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <script src="p5.min.js"></script>
+<script>
+
+function setup() {
+  let constraints = {
+  video: {
+    width: {
+      min: 720,
+      ideal: 1280,
+      max: 1280,
+    },
+    height: {
+      min: 400,
+      ideal: 720,
+      max: 720
+    },
+    //facingMode: 'user'
+    facingMode: 'environment'
+  },
+   audio: false
+  };
+
+    capture = createCapture(constraints);
+    capture.hide();
+  
+    c=createCanvas(1280, 720, WEBGL);
+    frameRate(10);
+    rectMode(CENTER);
+}
+
+function draw() {
+   background(200);
+   noStroke();
+   scale(1,1.5);
+   fill(200);
+
+   push();
+   translate(-720+100,0);
+   rect(00,00,400,800);
+   pop();
+   push();
+   translate(720-100,0);
+   rect(00,00,400,800);
+   pop();
+   push();
+   translate(00,-300);
+   rect(00,00,1280,300);
+   pop();
+   push();
+   translate(00,400);
+   rect(00,00,1280,400);
+
+   pop();
+   translate(1280/2,720/4);
+   rotateX(45*PI/180);
+   rotateZ(180*PI/180);
+   image(capture,0,0,1280,720);
+   fill(200);
+
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>
+
