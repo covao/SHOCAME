@@ -23,44 +23,85 @@ function setup() {
    audio: false
   };
 
-    capture = createCapture(constraints);
-    capture.hide();
-  
-    c=createCanvas(1280, 720, WEBGL);
-    frameRate(10);
-    rectMode(CENTER);
+	document.body.style.overflow = "hidden";
+	c=createCanvas(windowWidth, windowHeight,WEBGL);
+	c.position(0,20);
+	capture = createCapture(constraints);
+	capture.hide();
+
+	//frameRate(10);
+	rectMode(CENTER);
+	
+	slider = createSlider(10, 80, 45);
+	slider.position(10, 20);
+	slider.style('width', '150px');
+	p = createP("Tilt");
+	p.position(10,25);
+	
+	slider2 = createSlider(10, 200, 100);
+	slider2.position(200, 20);
+	slider2.style('width', '150px');
+	p = createP("Scale");
+	p.position(200,25);
+
+	slider3 = createSlider(0, 300, 100);
+	slider3.position(400, 20);
+	slider3.style('width', '150px');
+	p = createP("Side Mask");
+	p.position(400,25);
+
+	slider4 = createSlider(0, 1, 1,1);
+	slider4.position(600, 20);
+	slider4.style('width', '60px');
+	p = createP("Flip");
+	p.position(600,25);
+
 }
 
 function draw() {
+   ang = slider.value();
+   sc  = slider2.value();
+   cutx = slider3.value();
+   flip = abs(1-slider4.value());
+
    background(200);
    noStroke();
-   scale(1,1.5);
+   rotate(PI*flip);
+
+   scale(1*sc/100,1.5*sc/100);
    fill(200);
 
    push();
-   translate(-720+100,0);
-   rect(00,00,400,800);
+   translate(-720+cutx,0);
+   rect(0,0,400,800);
    pop();
    push();
-   translate(720-100,0);
-   rect(00,00,400,800);
+   translate(720-cutx,0);
+   rect(0,0,400,800);
    pop();
    push();
-   translate(00,-300);
-   rect(00,00,1280,300);
+   translate(0,-300);
+   rect(0,0,1280,300);
    pop();
    push();
-   translate(00,400);
-   rect(00,00,1280,400);
+   translate(0,400);
+   rect(0,0,1280,400);
+   pop();
 
-   pop();
    translate(1280/2,720/4);
-   rotateX(45*PI/180);
+   rotateX(ang*PI/180);
    rotateZ(180*PI/180);
    image(capture,0,0,1280,720);
    fill(200);
 
 }
+
+function windowResized() { // Resize
+  resizeCanvas(windowWidth, windowHeight,WEBGL);
+
+}
+
+
 </script>
 
 </head>
