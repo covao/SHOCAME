@@ -1,4 +1,4 @@
-# [SHOCAME🐢](https://covao.github.io/SHOCAME/html/shocame.html)  
+# [🐢SHOCAME🐢 書亀](https://covao.github.io/SHOCAME/html/shocame.html)  
 [Start SHOCAME!](https://covao.github.io/SHOCAME/html/shocame.html)  
 
 ![SHOCAME](img/Shocame_with_logo.png)
