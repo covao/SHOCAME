@@ -10,12 +10,12 @@ function setup() {
     width: {
       min: 720,
       ideal: 1280,
-      max: 1280,
+      max: 1920,
     },
     height: {
       min: 400,
       ideal: 720,
-      max: 720
+      max: 1080
     },
     //facingMode: 'user'
     facingMode: 'environment'
@@ -44,17 +44,23 @@ function setup() {
 	p = createP("Scale");
 	p.position(200,25);
 
-	slider3 = createSlider(0, 300, 100);
+	slider3 = createSlider(0, 400, 100);
 	slider3.position(400, 20);
 	slider3.style('width', '150px');
 	p = createP("Side Mask");
 	p.position(400,25);
 
-	slider4 = createSlider(0, 1, 1,1);
+	slider4 = createSlider(0, 350, 0);
 	slider4.position(600, 20);
-	slider4.style('width', '60px');
-	p = createP("Flip");
+	slider4.style('width', '150px');
+	p = createP("Bottom Mask");
 	p.position(600,25);
+
+	slider5 = createSlider(0, 1, 1,1);
+	slider5.position(800, 20);
+	slider5.style('width', '60px');
+	p = createP("Flip");
+	p.position(800,25);
 
 }
 
@@ -62,7 +68,8 @@ function draw() {
    ang = slider.value();
    sc  = slider2.value();
    cutx = slider3.value();
-   flip = abs(1-slider4.value());
+   cuty = slider4.value();
+   flip = abs(1-slider5.value());
 
    background(200);
    noStroke();
@@ -73,11 +80,15 @@ function draw() {
 
    push();
    translate(-720+cutx,0);
-   rect(0,0,400,800);
+   rect(0,0,600,1000);
    pop();
    push();
    translate(720-cutx,0);
-   rect(0,0,400,800);
+   rect(0,0,600,1000);
+   pop();
+   push();
+   translate(0,400-cuty);
+   rect(0,0,1280,400);
    pop();
    push();
    translate(0,-300);
@@ -100,7 +111,6 @@ function windowResized() { // Resize
   resizeCanvas(windowWidth, windowHeight,WEBGL);
 
 }
-
 
 </script>
 
