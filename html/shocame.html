@@ -25,7 +25,7 @@ function setup() {
 
 	document.body.style.overflow = "hidden";
 	c=createCanvas(windowWidth, windowHeight,WEBGL);
-	c.position(0,20);
+	c.position(0,0);
 	capture = createCapture(constraints);
 	capture.hide();
 
@@ -44,13 +44,13 @@ function setup() {
 	p = createP("Scale");
 	p.position(200,25);
 
-	slider3 = createSlider(0, 400, 100);
+	slider3 = createSlider(0, 350, 100);
 	slider3.position(400, 20);
 	slider3.style('width', '150px');
 	p = createP("Side Mask");
 	p.position(400,25);
 
-	slider4 = createSlider(0, 350, 0);
+	slider4 = createSlider(0, 250, 0);
 	slider4.position(600, 20);
 	slider4.style('width', '150px');
 	p = createP("Bottom Mask");
@@ -88,7 +88,7 @@ function draw() {
    pop();
    push();
    translate(0,400-cuty);
-   rect(0,0,1280,400);
+   rect(0,0,1280,500);
    pop();
    push();
    translate(0,-300);
